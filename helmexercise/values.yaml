@@ -45,10 +45,16 @@ service:
 
 ingress:
   enabled: true
-  className: ""
-  annotations: {}
+  className: "alb"
+  annotations: 
+    # kubernetes.io/ingress.class: alb
     # kubernetes.io/ingress.class: nginx
     # kubernetes.io/tls-acme: "true"
+    # OR: ingressClassName: alb (for Kubernetes v1.18+)
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/load-balancer-name: my-production-alb
+    alb.ingress.kubernetes.io/target-type: ip
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}]'
   hosts:
     - host: chart-example.local
       paths:
