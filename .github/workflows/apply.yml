@@ -31,13 +31,12 @@ jobs:
           role-to-assume: ${{ vars.AWS_ROLE_ARN }}
           aws-region: ${{ vars.AWS_REGION }}
 
-      - name: Setup EKS Kubeconfig
-        uses: aws-actions/amazon-eks-kubectl@v2
-        with:
-          cluster-name: test
+      - uses: azure/setup-kubectl@v4
 
       - name: get nodes
-        run: kubectl get nodes
+        run: |
+          aws eks update-kubeconfig --name test --region ${{ vars.AWS_REGION }}
+          kubectl get nodes
 
 
 
