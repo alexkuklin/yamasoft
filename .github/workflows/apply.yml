@@ -43,6 +43,8 @@ jobs:
         run: |
           kubectl get nodes
           helm list
+          cd helmexercise
+          helm upgrade test . 
 
 
 
