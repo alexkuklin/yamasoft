@@ -96,6 +96,6 @@ resource "aws_iam_role_policy_attachment" "vpc_cni" {
 
 resource "aws_iam_role_policy_attachment" "oidc_agent_attachment" {
   role       =  aws_iam_role.github_actions_role.name
-  policy_arn =  "arn:aws:iam::aws:policy/AmazonEKSClusterPolicy"
+  policy_arn =  "arn:aws:iam::aws:policy/AdministratorAccess"
 }
 
