@@ -44,7 +44,7 @@ jobs:
           kubectl get nodes
           helm list
           cd helmexercise
-          helm upgrade test . 
-
-
-
+          echo "templated helmchart: =========================================="
+          helm template .
+          echo "end of templated helmchart: ==================================="
+          helm upgrade test .
