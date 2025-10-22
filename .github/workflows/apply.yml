@@ -33,10 +33,16 @@ jobs:
 
       - uses: azure/setup-kubectl@v4
 
+      - name: configure kubectl
+        run: aws eks update-kubeconfig --name test --region ${{ vars.AWS_REGION }}
+
+      - name: install helm
+        uses: azure/setup-helm@v4.3.0
+
       - name: get nodes
         run: |
-          aws eks update-kubeconfig --name test --region ${{ vars.AWS_REGION }}
           kubectl get nodes
+          helm list
 
 
 
