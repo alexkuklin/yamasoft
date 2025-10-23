@@ -42,6 +42,8 @@ locals {
     },
   }
 
+  private_subnets = { for k, v in local.subnets : k => v if !v.public }
+  public_subnets = { for k, v in local.subnets : k => v if v.public }
 
 }
 
